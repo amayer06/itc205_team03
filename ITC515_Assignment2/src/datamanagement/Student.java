@@ -1,45 +1,45 @@
 package datamanagement;
 
 public class Student implements IStudent {
-	private Integer studentId;
-	private String firstName;
-	private String lastName;
-	private StudentUnitRecordList studentUnit;
+	private Integer id;
+	private String fn;
+	private String ln;
+	private StudentUnitRecordList su;
 
-	public Student(Integer studentId, String firstName, String lastName, StudentUnitRecordList studentUnit) {
-		this.studentId = studentId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.studentUnit = studentUnit == null ? new StudentUnitRecordList() : studentUnit;
+	public Student(Integer id, String fn, String ln, StudentUnitRecordList su) {
+		this.id = id;
+		this.fn = fn;
+		this.ln = ln;
+		this.su = su == null ? new StudentUnitRecordList() : su;
 	}
 
 	public Integer getID() {
-		return this.studentId;
+		return this.id;
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return fn;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.fn = firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return ln;
 	}
 
 	public void setLastName(String lastName) {
 
-		this.lastName = lastName;
+		this.ln = lastName;
 	}
 
 	public void addUnitRecord(IStudentUnitRecord record) {
-		studentUnit.add(record);
+		su.add(record);
 	}
 
 	public IStudentUnitRecord getUnitRecord(String unitCode) {
-		for (IStudentUnitRecord r : studentUnit)
+		for (IStudentUnitRecord r : su)
 			if (r.getUnitCode().equals(unitCode))
 				return r;
 
@@ -48,6 +48,6 @@ public class Student implements IStudent {
 	}
 
 	public StudentUnitRecordList getUnitRecords() {
-		return studentUnit;
+		return su;
 	}
 }
