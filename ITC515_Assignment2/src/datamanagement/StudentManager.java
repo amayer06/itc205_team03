@@ -7,7 +7,7 @@ public class StudentManager {
 	private static StudentManager self = null;
 
 	private StudentMap studentMap;
-	private java.util.HashMap<String, StudentMap> um;
+	private java.util.HashMap<String, StudentMap> unitMap;
 
 	public static StudentManager get() {
 		if (self == null)
@@ -19,12 +19,12 @@ public class StudentManager {
 	private StudentManager() {
 
 		studentMap = new StudentMap();
-		um = new java.util.HashMap<>();
+		unitMap = new java.util.HashMap<>();
 	}
 
 	public IStudent getStudent(Integer id) {
-		IStudent is = studentMap.get(id);
-		return is != null ? is : createStudent(id);
+		IStudent studentInterface = studentMap.get(id);
+		return studentInterface != null ? studentInterface : createStudent(id);
 	}
 
 	private Element getStudentElement(Integer id) {
@@ -37,47 +37,47 @@ public class StudentManager {
 	}
 
 	private IStudent createStudent(Integer id) {
-		IStudent is;
-		Element el = getStudentElement(id);
-		if (el != null) {
-			StudentUnitRecordList rlist = StudentUnitRecordManager.instance()
+		IStudent studentId;
+		Element element = getStudentElement(id);
+		if (element != null) {
+			StudentUnitRecordList recordsList = StudentUnitRecordManager.instance()
 					.getRecordsByStudent(id);
-			is = new Student(new Integer(el.getAttributeValue("sid")),
-					el.getAttributeValue("fname"),
-					el.getAttributeValue("lname"), rlist);
+			studentId = new Student(new Integer(element.getAttributeValue("sid")),
+					element.getAttributeValue("fname"),
+					element.getAttributeValue("lname"), recordsList);
 
-			studentMap.put(is.getID(), is);
-			return is;
+			studentMap.put(studentId.getID(), studentId);
+			return studentId;
 		}
 		throw new RuntimeException("DBMD: createStudent : student not in file");
 	}
 
-	private IStudent createStudentProxy(Integer id) {
-		Element studentElement = getStudentElement(id);
+	private IStudent createStudentProxy(Integer studentId) {
+		Element studentElement = getStudentElement(studentId);
 
 		if (studentElement != null)
-			return new StudentProxy(id, studentElement.getAttributeValue("fname"),
+			return new StudentProxy(studentId, studentElement.getAttributeValue("fname"),
 					studentElement.getAttributeValue("lname"));
 		throw new RuntimeException("DBMD: createStudent : student not in file");
 	}
 
-	public StudentMap getStudentsByUnit(String uc) {
-		StudentMap student = um.get(uc);
+	public StudentMap getStudentsByUnit(String unitCode) {
+		StudentMap student = unitMap.get(unitCode);
 		if (student != null) {
 
 			return student;
 		}
 
 		student = new StudentMap();
-		IStudent is;
-		StudentUnitRecordList ur = StudentUnitRecordManager.instance()
-				.getRecordsByUnit(uc);
-		for (IStudentUnitRecord S : ur) {
+		IStudent studentId;
+		StudentUnitRecordList unitRecord = StudentUnitRecordManager.instance()
+				.getRecordsByUnit(unitCode);
+		for (IStudentUnitRecord S : unitRecord) {
 
-			is = createStudentProxy(new Integer(S.getStudentID()));
-			student.put(is.getID(), is);
+			studentId = createStudentProxy(new Integer(S.getStudentId()));
+			student.put(studentId.getID(), studentId);
 		}
-		um.put(uc, student);
+		unitMap.put(unitCode, student);
 		return student;
 	}
 }
