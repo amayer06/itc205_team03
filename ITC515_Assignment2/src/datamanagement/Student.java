@@ -39,9 +39,9 @@ public class Student implements IStudent {
 	}
 
 	public IStudentUnitRecord getUnitRecord(String unitCode) {
-		for (IStudentUnitRecord r : studentUnits)
-			if (r.getUnitCode().equals(unitCode))
-				return r;
+		for (IStudentUnitRecord record : studentUnits)
+			if (record.getUnitCode().equals(unitCode))
+				return record;
 
 		return null;
 
