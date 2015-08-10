@@ -4,9 +4,9 @@ package datamanagement;
  * @author jtulip
  */
 
-public interface IStudentLister {
+public interface InterfaceStudentLister {
 
 	public void clearStudents();
 
-	public void addStudent(IStudent student);
+	public void addStudent(InterfaceStudent student);
 }

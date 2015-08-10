@@ -9,7 +9,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class cgUI extends javax.swing.JFrame implements IUnitLister,
-		IStudentLister {
+		InterfaceStudentLister {
 	private cgCTL ctl;
 	private javax.swing.DefaultComboBoxModel uM;
 	private javax.swing.DefaultComboBoxModel rM;
@@ -385,7 +385,7 @@ public class cgUI extends javax.swing.JFrame implements IUnitLister,
 		rM.addElement("<none selected>");
 	}
 
-	public void addStudent(IStudent student) {
+	public void addStudent(InterfaceStudent student) {
 		rM.addElement(student.getID().toString() + " : "
 				+ student.getFirstName() + " " + student.getLastName());
 	}
@@ -395,7 +395,7 @@ public class cgUI extends javax.swing.JFrame implements IUnitLister,
 		jlabel6.setText("");
 	}
 
-	public void setRecord(IStudentUnitRecord record) {
+	public void setRecord(InterfaceStudentUnitRecord record) {
 		jTextField1.setText(new Float(record.getAsg1()).toString());
 		jTextField2.setText(new Float(record.getAsg2()).toString());
 		jTextField3.setText(new Float(record.getExam()).toString());

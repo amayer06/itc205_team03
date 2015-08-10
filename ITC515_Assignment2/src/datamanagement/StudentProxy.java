@@ -1,6 +1,6 @@
 package datamanagement;
 
-public class StudentProxy implements IStudent {
+public class StudentProxy implements InterfaceStudent {
 	private Integer studentId;
 	private String firstName;
 
@@ -38,11 +38,11 @@ public class StudentProxy implements IStudent {
 		studentManagerMap.getStudent(studentId).setLastName(lastName);
 	}
 
-	public void addUnitRecord(IStudentUnitRecord record) {
+	public void addUnitRecord(InterfaceStudentUnitRecord record) {
 		studentManagerMap.getStudent(studentId).addUnitRecord(record);
 	}
 
-	public IStudentUnitRecord getUnitRecord(String unitCode) {
+	public InterfaceStudentUnitRecord getUnitRecord(String unitCode) {
 
 		return studentManagerMap.getStudent(studentId).getUnitRecord(unitCode);
 	}

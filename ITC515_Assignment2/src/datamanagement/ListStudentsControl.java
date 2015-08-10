@@ -1,13 +1,13 @@
 package datamanagement;
 
-public class ListStudentsCTL {
+public class ListStudentsControl {
 	private StudentManager studentManager;
 
-	public ListStudentsCTL() {
+	public ListStudentsControl() {
 		studentManager = StudentManager.get();
 	}
 
-	public void listStudents(IStudentLister lister, String unitCode) {
+	public void listStudents(InterfaceStudentLister lister, String unitCode) {
 		lister.clearStudents();
 		StudentMap students = studentManager.getStudentsByUnit(unitCode);
 		for (Integer studentId : students.keySet())

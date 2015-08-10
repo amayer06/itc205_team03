@@ -80,12 +80,12 @@ public class Unit implements IUnit {
 		return this.co5;
 	}
 
-	public void addStudentRecord(IStudentUnitRecord record) {
+	public void addStudentRecord(InterfaceStudentUnitRecord record) {
 		rs.add(record);
 	}
 
-	public IStudentUnitRecord getStudentRecord(int studentID) {
-		for (IStudentUnitRecord r : rs) {
+	public InterfaceStudentUnitRecord getStudentRecord(int studentID) {
+		for (InterfaceStudentUnitRecord r : rs) {
 			if (r.getStudentID() == studentID)
 				return r;
 		}

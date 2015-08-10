@@ -1,6 +1,6 @@
 package datamanagement;
 
-public interface IStudentUnitRecord {
+public interface InterfaceStudentUnitRecord {
 
 	public Integer getStudentId();
 

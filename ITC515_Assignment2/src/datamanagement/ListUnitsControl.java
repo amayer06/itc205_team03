@@ -1,9 +1,9 @@
 package datamanagement;
 
-public class ListUnitsCTL {
+public class ListUnitsControl {
 	private UnitManager unitManager;
 
-	public ListUnitsCTL() {
+	public ListUnitsControl() {
 		unitManager = UnitManager.UM();
 	}
 

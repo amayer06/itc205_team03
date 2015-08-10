@@ -1,6 +1,6 @@
 package datamanagement;
 
-public class Student implements IStudent {
+public class Student implements InterfaceStudent {
 	private Integer studentId;
 	private String firstName;
 	private String lastName;
@@ -34,12 +34,12 @@ public class Student implements IStudent {
 		this.lastName = lastName;
 	}
 
-	public void addUnitRecord(IStudentUnitRecord record) {
+	public void addUnitRecord(InterfaceStudentUnitRecord record) {
 		studentUnits.add(record);
 	}
 
-	public IStudentUnitRecord getUnitRecord(String unitCode) {
-		for (IStudentUnitRecord record : studentUnits)
+	public InterfaceStudentUnitRecord getUnitRecord(String unitCode) {
+		for (InterfaceStudentUnitRecord record : studentUnits)
 			if (record.getUnitCode().equals(unitCode))
 				return record;
 

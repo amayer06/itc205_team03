@@ -1,6 +1,6 @@
 package datamanagement;
 
-public interface IStudent {
+public interface InterfaceStudent {
 
 	public Integer getID();
 
@@ -12,9 +12,9 @@ public interface IStudent {
 
 	public void setLastName(String lastName);
 
-	public void addUnitRecord(IStudentUnitRecord record);
+	public void addUnitRecord(InterfaceStudentUnitRecord record);
 
-	public IStudentUnitRecord getUnitRecord(String unitCode);
+	public InterfaceStudentUnitRecord getUnitRecord(String unitCode);
 
 	public StudentUnitRecordList getUnitRecords();
 

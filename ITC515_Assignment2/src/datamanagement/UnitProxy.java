@@ -39,11 +39,11 @@ public void setAeCutoff(float cutoff) {um.getUnit(UC).setAeCutoff(cutoff);
 public String getGrade(float f1, float f2, float f3) {
 return um.getUnit(UC).getGrade(f1, f2, f3);
     }
-    public void addStudentRecord(IStudentUnitRecord record) 
+    public void addStudentRecord(InterfaceStudentUnitRecord record) 
 { 
 um.getUnit(UC).addStudentRecord(record);
     }
-    public IStudentUnitRecord getStudentRecord(int s) {return um.getUnit(UC).getStudentRecord(s);}
+    public InterfaceStudentUnitRecord getStudentRecord(int s) {return um.getUnit(UC).getStudentRecord(s);}
 public StudentUnitRecordList listStudentRecords() {
     return um.getUnit(UC).listStudentRecords();
 }

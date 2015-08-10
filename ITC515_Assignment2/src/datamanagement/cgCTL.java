@@ -21,7 +21,7 @@ public class cgCTL {
 		CGUI.setState6(false);
 		CGUI.Refresh3();
 
-		ListUnitsCTL luCTL = new ListUnitsCTL();
+		ListUnitsControl luCTL = new ListUnitsControl();
 		luCTL.listUnits(CGUI);
 		CGUI.setVisible(true);
 		CGUI.setState1(true);
@@ -32,7 +32,7 @@ public class cgCTL {
 		if (code.equals("NONE"))
 			CGUI.setState2(false);
 		else {
-			ListStudentsCTL lsCTL = new ListStudentsCTL();
+			ListStudentsControl lsCTL = new ListStudentsControl();
 			lsCTL.listStudents(CGUI, code);
 			cuc = code;
 			CGUI.setState2(true);
@@ -51,9 +51,9 @@ public class cgCTL {
 		}
 
 		else {
-			IStudent s = StudentManager.get().getStudent(id);
+			InterfaceStudent s = StudentManager.get().getStudent(id);
 
-			IStudentUnitRecord r = s.getUnitRecord(cuc);
+			InterfaceStudentUnitRecord r = s.getUnitRecord(cuc);
 
 			CGUI.setRecord(r);
 			CGUI.setState3(true);
@@ -86,9 +86,9 @@ public class cgCTL {
 	public void saveGrade(float asg1, float asg2, float exam) {
 
 		IUnit u = UnitManager.UM().getUnit(cuc);
-		IStudent s = StudentManager.get().getStudent(currentStudentID);
+		InterfaceStudent s = StudentManager.get().getStudent(currentStudentID);
 
-		IStudentUnitRecord r = s.getUnitRecord(cuc);
+		InterfaceStudentUnitRecord r = s.getUnitRecord(cuc);
 		r.setAsg1(asg1);
 		r.setAsg2(asg2);
 		r.setExam(exam);
