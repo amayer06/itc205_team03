@@ -66,7 +66,7 @@ public class CheckGradeControl {
 	}
 
 	public String checkGrade(float assignment1, float assignment2, float exam) {
-		InterfaceUnit unit = UnitManager.UM().getUnit(currentUnitCode);
+		InterfaceUnit unit = UnitManager.unitManager().getUnit(currentUnitCode);
 		String string = unit.getGrade(assignment1, assignment2, exam);
 		checkGradeUserInterface.setState4(true);
 		checkGradeUserInterface.setState5(false);
@@ -85,7 +85,7 @@ public class CheckGradeControl {
 
 	public void saveGrade(float assignment1, float assignment2, float exam) {
 
-		InterfaceUnit unit = UnitManager.UM().getUnit(currentUnitCode);
+		InterfaceUnit unit = UnitManager.unitManager().getUnit(currentUnitCode);
 		InterfaceStudent student = StudentManager.get().getStudent(currentStudentId);
 
 		InterfaceStudentUnitRecord record = student.getUnitRecord(currentUnitCode);
