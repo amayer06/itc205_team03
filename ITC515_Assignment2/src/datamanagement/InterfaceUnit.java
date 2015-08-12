@@ -22,9 +22,9 @@ public interface InterfaceUnit {
 
 	public void setHighDistinctionCutoff(float cutoff);
 
-	public float getAeCutoff();
+	public float getAdditionalExaminationCutoff();
 
-	public void setAeCutoff(float cutoff);
+	public void setAdditionalExaminationCutoff(float cutoff);
 
 	public int getAssignment1Weight();
 
