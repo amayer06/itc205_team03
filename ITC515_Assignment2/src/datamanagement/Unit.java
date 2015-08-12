@@ -7,7 +7,7 @@ public class Unit implements InterfaceUnit {
 	private float creditCuttoff;
 	private float distinctionCuttoff;
 	private float highDefinitionCuttoff;
-	private float aeCutoff;
+	private float additionalExaminationCutoff;
 	private int assignment1, assignment2, exam;
 
 	private StudentUnitRecordList recordStudent;
@@ -21,7 +21,7 @@ public class Unit implements InterfaceUnit {
 		creditCuttoff = float2;
 		this.distinctionCuttoff = float3;
 		highDefinitionCuttoff = float4;
-		this.aeCutoff = float5;
+		this.additionalExaminationCutoff = float5;
 		this.setAssessmentWeights(integer1, integer2, integer3);
 		recordStudent = recordList == null ? new StudentUnitRecordList() : recordList;
 	}
@@ -72,12 +72,12 @@ public class Unit implements InterfaceUnit {
 
 	}
 
-	public void setAeCutoff(float cutoff) {
-		this.aeCutoff = cutoff;
+	public void setAdditionalExaminationCutoff(float cutoff) {
+		this.additionalExaminationCutoff = cutoff;
 	}
 
-	public float getAeCutoff() {
-		return this.aeCutoff;
+	public float getAdditionalExaminationCutoff() {
+		return this.additionalExaminationCutoff;
 	}
 
 	public void addStudentRecord(InterfaceStudentUnitRecord record) {
@@ -124,12 +124,12 @@ public class Unit implements InterfaceUnit {
 		this.exam = exam;
 	}
 
-	private void setCutoffs(float pass, float credit, float distinction, float highDestinction, float ae) {
+	private void setCutoffs(float pass, float credit, float distinction, float highDestinction, float additionalExamination) {
 		if (pass < 0 || pass > 100 || credit < 0 || credit > 100 || distinction < 0 || distinction > 100
-				|| highDestinction < 0 || highDestinction > 100 || ae < 0 || ae > 100) {
+				|| highDestinction < 0 || highDestinction > 100 || additionalExamination < 0 || additionalExamination > 100) {
 			throw new RuntimeException("Assessment cutoffs cant be less than zero or greater than 100");
 		}
-		if (ae >= pass) {
+		if (additionalExamination >= pass) {
 			throw new RuntimeException("AE cutoff must be less than PS cutoff");
 		}
 		if (pass >= credit) {
@@ -151,7 +151,7 @@ public class Unit implements InterfaceUnit {
 			throw new RuntimeException("marks cannot be less than zero or greater than assessment weights");
 		}
 
-		if (t < aeCutoff) {
+		if (t < additionalExaminationCutoff) {
 			return "FL";
 		} else if (t < passCuttoff)
 			return "AE";
