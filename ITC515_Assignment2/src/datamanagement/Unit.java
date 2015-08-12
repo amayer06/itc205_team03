@@ -59,7 +59,7 @@ public class Unit implements InterfaceUnit {
 		return this.distinctionCuttoff;
 	}
 
-	public void HDCutoff(float cutoff) {
+	public void highDefinitionCutoff(float cutoff) {
 		this.highDefinitionCuttoff = cutoff;
 	}
 
