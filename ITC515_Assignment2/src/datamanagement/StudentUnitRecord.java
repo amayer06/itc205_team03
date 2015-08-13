@@ -9,12 +9,12 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 			float exam) {
 		this.sid = id;
 		this.uc = code;
-		this.setAsg1(asg1);
-		this.setAsg2(asg2);
+		this.setAssignment1(asg1);
+		this.setAssignment2(asg2);
 		this.setExam(exam);
 	}
 
-	public Integer getStudentID() {
+	public Integer getStudentId() {
 		return sid;
 	}
 
@@ -22,7 +22,7 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 		return uc;
 	}
 
-	public void setAsg1(float a1) {
+	public void setAssignment1(float a1) {
 		if (a1 < 0 ||
 			a1 > UnitManager.UM().getUnit(uc).getAsg1Weight()) {
 			throw new RuntimeException("Mark cannot be less than zero or greater than assessment weight");
@@ -30,12 +30,12 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 		this.a1 = a1;
 	}
 
-	public float getAsg1() {
+	public float getAssignment1() {
 
 		return a1;
 	}
 
-	public void setAsg2(float a2) {
+	public void setAssignment2(float a2) {
 		if (a2 < 0 ||
 			a2 > UnitManager.UM().getUnit(uc).getAsg2Weight()) {
 			throw new RuntimeException("Mark cannot be less than zero or greater than assessment weight");
@@ -44,7 +44,7 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 
 	}
 
-	public float getAsg2() {
+	public float getAssignment2() {
 		return a2;
 	}
 
