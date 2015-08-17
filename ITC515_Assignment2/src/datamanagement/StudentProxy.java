@@ -1,53 +1,69 @@
 package datamanagement;
 
 public class StudentProxy implements InterfaceStudent {
-	private Integer studentId;
-	private String firstName;
+	private Integer studentId_;
+	private String firstName_;
+	private String lastName_;
+	private StudentManager studentManagerMap_;
 
-	private String lastName;
-	private StudentManager studentManagerMap;
-
+	
+	
 	public StudentProxy(Integer studentId, String firstName, String lastName) {
-		this.studentId = studentId;
-		this.firstName = firstName;
-
-		this.lastName = lastName;
-		this.studentManagerMap = StudentManager.get();
+		this.studentId_ = studentId;
+		this.firstName_ = firstName;
+		this.lastName_ = lastName;
+		this.studentManagerMap_ = StudentManager.get();
 	}
 
+	
+	
 	public Integer getID() {
-		return studentId;
+		return studentId_;
 
 	}
 
+	
+	
 	public String getFirstName() {
-		return firstName;
+		return firstName_;
 	}
 
+	
+	
 	public String getLastName() {
-		return lastName;
+		return lastName_;
 	}
 
+	
+	
 	public void setFirstName(String firstName) {
 
-		studentManagerMap.getStudent(studentId).setFirstName(firstName);
+		studentManagerMap_.getStudent(studentId_).setFirstName(firstName);
 	}
 
+	
+	
 	public void setLastName(String lastName) {
 
-		studentManagerMap.getStudent(studentId).setLastName(lastName);
+		studentManagerMap_.getStudent(studentId_).setLastName(lastName);
 	}
 
+	
+	
 	public void addUnitRecord(InterfaceStudentUnitRecord record) {
-		studentManagerMap.getStudent(studentId).addUnitRecord(record);
+		studentManagerMap_.getStudent(studentId_).addUnitRecord(record);
 	}
 
+	
+	
 	public InterfaceStudentUnitRecord getUnitRecord(String unitCode) {
 
-		return studentManagerMap.getStudent(studentId).getUnitRecord(unitCode);
+		return studentManagerMap_.getStudent(studentId_).getUnitRecord(unitCode);
 	}
 
+	
+	
 	public StudentUnitRecordList getUnitRecords() {
-		return studentManagerMap.getStudent(studentId).getUnitRecords();
+		return studentManagerMap_.getStudent(studentId_).getUnitRecords();
 	}
 }

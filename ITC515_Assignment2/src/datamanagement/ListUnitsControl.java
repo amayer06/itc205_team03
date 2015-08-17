@@ -1,15 +1,15 @@
 package datamanagement;
 
 public class ListUnitsControl {
-	private UnitManager unitManager;
+	private UnitManager unitManager_;
 
 	public ListUnitsControl() {
-		unitManager = UnitManager.UM();
+		unitManager_ = UnitManager.UM();
 	}
 
 	public void listUnits(IUnitLister lister) {
 		lister.clearUnits();
-		UnitMap units = unitManager.getUnits();
+		UnitMap units = unitManager_.getUnits();
 		for (String subjects : units.keySet())
 			lister.addUnit(units.get(subjects));
 	}
