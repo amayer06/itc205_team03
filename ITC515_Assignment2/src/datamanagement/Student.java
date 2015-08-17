@@ -1,45 +1,61 @@
 package datamanagement;
 
 public class Student implements InterfaceStudent {
-	private Integer studentId;
-	private String firstName;
-	private String lastName;
-	private StudentUnitRecordList studentUnits;
+	private Integer studentId_;
+	private String firstName_;
+	private String lastName_;
+	private StudentUnitRecordList studentUnits_;
 
+	
+	
 	public Student(Integer studentId, String firstName, String lastName, StudentUnitRecordList studentUnit) {
-		this.studentId = studentId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.studentUnits = studentUnit == null ? new StudentUnitRecordList() : studentUnit;
+		this.studentId_ = studentId;
+		this.firstName_ = firstName;
+		this.lastName_ = lastName;
+		this.studentUnits_ = studentUnit == null ? new StudentUnitRecordList() : studentUnit;
 	}
 
+	
+	
 	public Integer getID() {
-		return this.studentId;
+		return this.studentId_;
 	}
 
+	
+	
 	public String getFirstName() {
-		return firstName;
+		return firstName_;
 	}
 
+	
+	
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstName_ = firstName;
 	}
 
+	
+	
 	public String getLastName() {
-		return lastName;
+		return lastName_;
 	}
 
+	
+	
 	public void setLastName(String lastName) {
 
-		this.lastName = lastName;
+		this.lastName_ = lastName;
 	}
 
+	
+	
 	public void addUnitRecord(InterfaceStudentUnitRecord record) {
-		studentUnits.add(record);
+		studentUnits_.add(record);
 	}
 
+	
+	
 	public InterfaceStudentUnitRecord getUnitRecord(String unitCode) {
-		for (InterfaceStudentUnitRecord record : studentUnits)
+		for (InterfaceStudentUnitRecord record : studentUnits_)
 			if (record.getUnitCode().equals(unitCode))
 				return record;
 
@@ -47,7 +63,9 @@ public class Student implements InterfaceStudent {
 
 	}
 
+	
+	
 	public StudentUnitRecordList getUnitRecords() {
-		return studentUnits;
+		return studentUnits_;
 	}
 }
