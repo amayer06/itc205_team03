@@ -4,26 +4,27 @@ import java.util.*;
 import java.io.*;
 
 public class AppProperties {
-	private static AppProperties self = null;
-	private Properties properties;
+	private static AppProperties self_ = null;
+	private Properties properties_;
 
 	public static AppProperties getInstance() {
-		if (self == null) {
-			self = new AppProperties();
+		if (self_ == null) {
+			self_ = new AppProperties();
 		}
-		return self;
+		return self_;
 	}
 
 	private AppProperties() {
-		properties = new Properties();
+		properties_ = new Properties();
 		try {
-			properties.load(new FileInputStream("Properties.prop"));
-		} catch (IOException e) {
+			properties_.load(new FileInputStream("Properties.prop"));
+		} 
+		catch (IOException e) {
 			throw new RuntimeException("Could not read property file");
 		}
 	}
 
 	public Properties getProperties() {
-		return properties;
+		return properties_;
 	}
 }
