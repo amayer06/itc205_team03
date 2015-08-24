@@ -16,8 +16,8 @@ private StudentManager() {
     
             sm = new StudentMap();
         um = new java.util.HashMap<>();}
-        public IStudent getStudent(Integer id) {
-IStudent is = sm.get(id);
+        public InterfaceStudent getStudent(Integer id) {
+InterfaceStudent is = sm.get(id);
     return is != null ? is : createStudent(id);
     }
 
@@ -26,8 +26,8 @@ private Element getStudentElement(Integer id) {
             if (id.toString().equals(el.getAttributeValue("sid"))) 
 return el;return null;
                 }
-                private IStudent createStudent(Integer id) {
-                    IStudent is;
+                private InterfaceStudent createStudent(Integer id) {
+                    InterfaceStudent is;
         Element el = getStudentElement(id);
         if (el != null) {
             StudentUnitRecordList rlist = StudentUnitRecordManager.instance().getRecordsByStudent(id);
@@ -37,7 +37,7 @@ return el;return null;
     sm.put(is.getID(), is);
         return is; }
 throw new RuntimeException("DBMD: createStudent : student not in file");}
-    private IStudent createStudentProxy(Integer id) {
+    private InterfaceStudent createStudentProxy(Integer id) {
         Element el = getStudentElement(id);
         
         
@@ -58,9 +58,9 @@ throw new RuntimeException("DBMD: createStudent : student not in file");}
                 }
 
 s = new StudentMap();
-IStudent is;
+InterfaceStudent is;
     StudentUnitRecordList ur = StudentUnitRecordManager.instance().getRecordsByUnit(uc);
-        for (IStudentUnitRecord S : ur) {
+        for (InterfaceStudentUnitRecord S : ur) {
             
             
             
@@ -70,7 +70,7 @@ IStudent is;
             
             
             
-            is = createStudentProxy(new Integer(S.getStudentID()));
+            is = createStudentProxy(new Integer(S.getStudentId()));
     s.put(is.getID(), is);}
     um.put( uc, s);
         return s;

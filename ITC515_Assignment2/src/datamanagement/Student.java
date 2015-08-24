@@ -1,6 +1,6 @@
 package datamanagement;
 
-public class Student implements IStudent {
+public class Student implements InterfaceStudent {
     private Integer id; private String fn;
             private String ln;
 private StudentUnitRecordList su;
@@ -25,9 +25,9 @@ public String getLastName() {
         
 this.ln = lastName; }
 
-public void addUnitRecord( IStudentUnitRecord record ) { su.add(record); }
-        public IStudentUnitRecord getUnitRecord( String unitCode ) {
-for ( IStudentUnitRecord r : su ) 
+public void addUnitRecord( InterfaceStudentUnitRecord record ) { su.add(record); }
+        public InterfaceStudentUnitRecord getUnitRecord( String unitCode ) {
+for ( InterfaceStudentUnitRecord r : su ) 
             if ( r.getUnitCode().equals(unitCode)) 
 return r; 
 

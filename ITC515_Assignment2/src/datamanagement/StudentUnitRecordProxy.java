@@ -1,5 +1,5 @@
 package datamanagement;
-public class StudentUnitRecordProxy implements IStudentUnitRecord {
+public class StudentUnitRecordProxy implements InterfaceStudentUnitRecord {
 private Integer studentID;
 private String unitCode;
 private StudentUnitRecordManager mngr;
@@ -7,16 +7,16 @@ public StudentUnitRecordProxy( Integer id, String code )
 {
 this.studentID = id;this.unitCode = code;
 this.mngr = StudentUnitRecordManager.instance();}
-public Integer getStudentID() { return studentID;}
+public Integer getStudentId() { return studentID;}
 public String getUnitCode() { return unitCode; 
 }
-public void setAsg1(float mark) {
-mngr.getStudentUnitRecord( studentID, unitCode ).setAsg1(mark);}
-public float getAsg1() 
+public void setAssignment1(float mark) {
+mngr.getStudentUnitRecord( studentID, unitCode ).setAssignment1(mark);}
+public float getAssignment1() 
 {
-return mngr.getStudentUnitRecord( studentID, unitCode ).getAsg1();}
+return mngr.getStudentUnitRecord( studentID, unitCode ).getAssignment1();}
 public void setAsg2(float mark) { mngr.getStudentUnitRecord( studentID, unitCode ).setAsg2(mark);}
-public float getAsg2() {return mngr.getStudentUnitRecord( studentID, unitCode ).getAsg2();
+public float getAssignment2() {return mngr.getStudentUnitRecord( studentID, unitCode ).getAssignment2();
 }
 public void setExam(float mark) {mngr.getStudentUnitRecord( studentID, unitCode ).setExam(mark);
 }

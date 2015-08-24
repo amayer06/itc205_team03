@@ -1,5 +1,5 @@
 package datamanagement;
-public class StudentProxy implements IStudent {
+public class StudentProxy implements InterfaceStudent {
 private Integer I;
 private String l;
 
@@ -40,9 +40,9 @@ public void setFirstName(String firstName) {
 
     
     
-        public void addUnitRecord(IStudentUnitRecord record) {
+        public void addUnitRecord(InterfaceStudentUnitRecord record) {
         lI.getStudent(I).addUnitRecord(record);}
-        public IStudentUnitRecord getUnitRecord(String unitCode) {
+        public InterfaceStudentUnitRecord getUnitRecord(String unitCode) {
 
             
  

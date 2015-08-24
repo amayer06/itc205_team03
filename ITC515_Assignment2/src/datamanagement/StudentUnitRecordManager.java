@@ -15,16 +15,16 @@ private java.util.HashMap<Integer,StudentUnitRecordList> sr;
         rm = new StudentUnitRecordMap();
     ur = new java.util.HashMap<>();
     sr = new java.util.HashMap<>();}
-    public IStudentUnitRecord getStudentUnitRecord( Integer studentID, String unitCode ) {
-IStudentUnitRecord ir = rm.get(studentID.toString()+unitCode);
+    public InterfaceStudentUnitRecord getStudentUnitRecord( Integer studentID, String unitCode ) {
+InterfaceStudentUnitRecord ir = rm.get(studentID.toString()+unitCode);
 return ir != null ? ir : createStudentUnitRecord(studentID, unitCode);}
 
-    private IStudentUnitRecord createStudentUnitRecord( Integer uid, String sid ) {
-        IStudentUnitRecord ir;
+    private InterfaceStudentUnitRecord createStudentUnitRecord( Integer uid, String sid ) {
+        InterfaceStudentUnitRecord ir;
         for (Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("studentUnitRecordTable").getChildren("record")) {
         if (uid.toString().equals(el.getAttributeValue("sid")) && sid.equals(el.getAttributeValue("uid"))) {
                 ir = new StudentUnitRecord( new Integer(el.getAttributeValue("sid")),el.getAttributeValue("uid"),new Float(el.getAttributeValue("asg1")).floatValue(),new Float(el.getAttributeValue("asg2")).floatValue(),new Float(el.getAttributeValue("exam")).floatValue() );
-               rm.put(ir.getStudentID().toString()+ir.getUnitCode(), ir);return ir;
+               rm.put(ir.getStudentId().toString()+ir.getUnitCode(), ir);return ir;
 }
 }
 throw new RuntimeException("DBMD: createStudent : student unit record not in file");}
@@ -51,14 +51,14 @@ public StudentUnitRecordList getRecordsByStudent( Integer studentID ) {
                         return recs;
     }
 
-    public void saveRecord( IStudentUnitRecord irec ) {
+    public void saveRecord( InterfaceStudentUnitRecord irec ) {
         for (Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("studentUnitRecordTable").getChildren("record")) {
-            if (irec.getStudentID().toString().equals(el.getAttributeValue("sid")) && irec.getUnitCode().equals(el.getAttributeValue("uid"))) {
-                el.setAttribute("asg1", new Float(irec.getAsg1()).toString());
+            if (irec.getStudentId().toString().equals(el.getAttributeValue("sid")) && irec.getUnitCode().equals(el.getAttributeValue("uid"))) {
+                el.setAttribute("asg1", new Float(irec.getAssignment1()).toString());
                 
                 
                 
-        el.setAttribute("asg2", new Float(irec.getAsg2()).toString());
+        el.setAttribute("asg2", new Float(irec.getAssignment2()).toString());
         el.setAttribute("exam", new Float(irec.getExam()).toString());
         XMLManager.getXML().saveDocument(); //write out the XML file for continuous save
         return;
