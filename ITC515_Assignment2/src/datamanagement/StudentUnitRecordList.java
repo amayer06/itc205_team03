@@ -1,3 +1,4 @@
 package datamanagement;
 
-public class StudentUnitRecordList extends java.util.ArrayList<InterfaceStudentUnitRecord> {}
+public class StudentUnitRecordList extends java.util.ArrayList<InterfaceStudentUnitRecord> {
+}
