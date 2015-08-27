@@ -9,10 +9,10 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 
 	
 	
-	public StudentUnitRecord(Integer studentId, String unitCode, float asg1, float assignment2, float examMark) {
+	public StudentUnitRecord(Integer studentId, String unitCode, float assignment1, float assignment2, float examMark) {
 		this.studentId_ = studentId;
 		this.unitCode_ = unitCode;
-		this.setAssignment1Mark(asg1);
+		this.setAssignment1Mark(assignment1);
 		this.setAssignment2Mark(assignment2);
 		this.setExamMark(examMark);
 	}
