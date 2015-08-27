@@ -48,11 +48,11 @@ public class StudentUnitRecordManager {
 									.getChild("studentUnitRecordTable").getChildren("record");
 	
 		for (Element element : elements) {
-			if (studentId.toString().equals(element.getAttributeValue("studentId"))
-					&& unitCode.equals(element.getAttributeValue("unitId"))) {
-				record = new StudentUnitRecord(new Integer(element.getAttributeValue("studentId")),
-						element.getAttributeValue("unitId"), new Float(element.getAttributeValue("assignment1")).floatValue(),
-						new Float(element.getAttributeValue("assigmment2")).floatValue(),
+			if (studentId.toString().equals(element.getAttributeValue("sid"))
+					&& unitCode.equals(element.getAttributeValue("uid"))) {
+				record = new StudentUnitRecord(new Integer(element.getAttributeValue("sid")),
+						element.getAttributeValue("uid"), new Float(element.getAttributeValue("asg1")).floatValue(),
+						new Float(element.getAttributeValue("asg2")).floatValue(),
 						new Float(element.getAttributeValue("exam")).floatValue());
 				recordMap_.put(record.getStudentId().toString() + record.getUnitCode(), record);
 				return record;
@@ -77,8 +77,8 @@ public class StudentUnitRecordManager {
 									.getChild("studentUnitRecordTable").getChildren("record");
 	
 		for (Element element : elements) {
-			if (unitCode.equals(element.getAttributeValue("unitId"))){
-				Integer studentId = new Integer(element.getAttributeValue("studentId"));			
+			if (unitCode.equals(element.getAttributeValue("uid"))){
+				Integer studentId = new Integer(element.getAttributeValue("sid"));			
 				StudentUnitRecordProxy studentProxy = new StudentUnitRecordProxy(studentId, unitCode);
 				records.add(studentProxy);
 			}
@@ -104,9 +104,9 @@ public class StudentUnitRecordManager {
 		List<Element> elements = (List<Element>) document.getRootElement()
 									.getChild("studentUnitRecordTable").getChildren("record");
 		for (Element element : elements) {
-			if (studentId.toString().equals(element.getAttributeValue("studentId"))) {
-				records.add(new StudentUnitRecordProxy(new Integer(element.getAttributeValue("studentId")),
-						element.getAttributeValue("unitId")));
+			if (studentId.toString().equals(element.getAttributeValue("sid"))) {
+				records.add(new StudentUnitRecordProxy(new Integer(element.getAttributeValue("sid")),
+						element.getAttributeValue("uid")));
 			}
 		}
 		if (records.size() > 0) {
@@ -123,10 +123,10 @@ public class StudentUnitRecordManager {
 		List<Element> elements = (List<Element>) document.getRootElement()
 									.getChild("studentUnitRecordTable").getChildren("record");
 		for (Element element : elements) {
-			if (recordInterface.getStudentId().toString().equals(element.getAttributeValue("studentId"))
-					&& recordInterface.getUnitCode().equals(element.getAttributeValue("unitId"))) {
-					element.setAttribute("assignment1", new Float(recordInterface.getAssignment1Mark()).toString());
-					element.setAttribute("assigmment2", new Float(recordInterface.getAssignment2Mark()).toString());
+			if (recordInterface.getStudentId().toString().equals(element.getAttributeValue("sid"))
+					&& recordInterface.getUnitCode().equals(element.getAttributeValue("uid"))) {
+					element.setAttribute("asg1", new Float(recordInterface.getAssignment1Mark()).toString());
+					element.setAttribute("asg2", new Float(recordInterface.getAssignment2Mark()).toString());
 					element.setAttribute("exam", new Float(recordInterface.getExamMark()).toString());
 					XMLManager.getXML().saveDocument(); // write out the XML file for continuous save
 				return;

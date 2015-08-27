@@ -23,7 +23,7 @@ public class AppProperties {
 		try {
 			properties_.load(new FileInputStream("Properties.prop"));
 		} 
-		catch (IOException e) {
+		catch (IOException inputOutputException) {
 			throw new RuntimeException("Could not read property file");
 		}
 	}
