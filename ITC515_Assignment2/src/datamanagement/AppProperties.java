@@ -7,6 +7,8 @@ public class AppProperties {
 	private static AppProperties self_ = null;
 	private Properties properties_;
 
+	
+	
 	public static AppProperties getInstance() {
 		if (self_ == null) {
 			self_ = new AppProperties();
@@ -14,6 +16,8 @@ public class AppProperties {
 		return self_;
 	}
 
+	
+	
 	private AppProperties() {
 		properties_ = new Properties();
 		try {
@@ -24,6 +28,8 @@ public class AppProperties {
 		}
 	}
 
+	
+	
 	public Properties getProperties() {
 		return properties_;
 	}

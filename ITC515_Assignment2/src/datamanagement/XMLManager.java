@@ -30,17 +30,17 @@ public class XMLManager {
 	
 	
 	public void init() {
-		String s = AppProperties.getInstance().getProperties().getProperty("XMLFILE");
+		String xmlFileString = AppProperties.getInstance().getProperties().getProperty("XMLFILE");
 		try {
 			SAXBuilder builder = new SAXBuilder();
 			builder.setExpandEntities(true);
-			document_ = builder.build(s);
+			document_ = builder.build(xmlFileString);
 		}
-		catch (JDOMException e) {
+		catch (JDOMException jdomException) {
 			System.err.printf("%s", "DBMD: XMLManager : init : caught JDOMException\n");
 			throw new RuntimeException("DBMD: XMLManager : init : JDOMException");
 		} 
-		catch (IOException e) {
+		catch (IOException inputOutputException) {
 			System.err.printf("%s", "DBMD: XMLManager : init : caught IOException\n");
 			throw new RuntimeException("DBMD: XMLManager : init : IOException");
 		}
@@ -55,14 +55,14 @@ public class XMLManager {
 	
 	
 	public void saveDocument() {
-		String xmlfile = AppProperties.getInstance().getProperties().getProperty("XMLFILE");
-		try (FileWriter fileOut = new FileWriter(xmlfile)) {
+		String xmlFile = AppProperties.getInstance().getProperties().getProperty("XMLFILE");
+		try (FileWriter fileOut = new FileWriter(xmlFile)) {
 			XMLOutputter xmlOut = new XMLOutputter(Format.getPrettyFormat());
 			xmlOut.output(document_, fileOut);
 			fileOut.close();
 		} 
-		catch (IOException ioe) {
-			System.err.printf("%s\n", "DBMD : XMLManager : saveDocument : Error saving XML to " + xmlfile);
+		catch (IOException inputOutputException) {
+			System.err.printf("%s\n", "DBMD : XMLManager : saveDocument : Error saving XML to " + xmlFile);
 			throw new RuntimeException("DBMD: XMLManager : saveDocument : error writing to file");
 		}
 	}

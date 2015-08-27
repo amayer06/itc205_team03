@@ -2,7 +2,6 @@ package datamanagement;
 
 import java.util.List;
 import org.jdom.*;
-import org.jdom.Document;
 
 public class StudentUnitRecordManager {
 
@@ -30,10 +29,10 @@ public class StudentUnitRecordManager {
 
 	
 	
-	public InterfaceStudentUnitRecord getStudentUnitRecord(Integer studentID, String unitCode) {
-		InterfaceStudentUnitRecord record = recordMap_.get(studentID.toString() + unitCode);
+	public InterfaceStudentUnitRecord getStudentUnitRecord(Integer studentId, String unitCode) {
+		InterfaceStudentUnitRecord record = recordMap_.get(studentId.toString() + unitCode);
 		if (record == null) {
-			record = createStudentUnitRecord(studentID, unitCode);
+			record = createStudentUnitRecord(studentId, unitCode);
 		}
 		return record;
 	}
@@ -41,22 +40,22 @@ public class StudentUnitRecordManager {
 	
 	
 	private InterfaceStudentUnitRecord createStudentUnitRecord(Integer studentId, String unitCode) {
-		InterfaceStudentUnitRecord ir;
+		InterfaceStudentUnitRecord record;
 		
-		Document doc = XMLManager.getXML().getDocument();
+		Document document = XMLManager.getXML().getDocument();
 		@SuppressWarnings("unchecked")
-		List<Element> elements = (List<Element>) doc.getRootElement()
+		List<Element> elements = (List<Element>) document.getRootElement()
 									.getChild("studentUnitRecordTable").getChildren("record");
 	
-		for (Element el : elements) {
-			if (studentId.toString().equals(el.getAttributeValue("sid"))
-					&& unitCode.equals(el.getAttributeValue("uid"))) {
-				ir = new StudentUnitRecord(new Integer(el.getAttributeValue("sid")),
-						el.getAttributeValue("uid"), new Float(el.getAttributeValue("asg1")).floatValue(),
-						new Float(el.getAttributeValue("asg2")).floatValue(),
-						new Float(el.getAttributeValue("exam")).floatValue());
-				recordMap_.put(ir.getStudentId().toString() + ir.getUnitCode(), ir);
-				return ir;
+		for (Element element : elements) {
+			if (studentId.toString().equals(element.getAttributeValue("studentId"))
+					&& unitCode.equals(element.getAttributeValue("unitId"))) {
+				record = new StudentUnitRecord(new Integer(element.getAttributeValue("studentId")),
+						element.getAttributeValue("unitId"), new Float(element.getAttributeValue("assignment1")).floatValue(),
+						new Float(element.getAttributeValue("assigmment2")).floatValue(),
+						new Float(element.getAttributeValue("exam")).floatValue());
+				recordMap_.put(record.getStudentId().toString() + record.getUnitCode(), record);
+				return record;
 			}
 		}
 		throw new RuntimeException("DBMD: createStudent : student unit record not in file");
@@ -71,14 +70,15 @@ public class StudentUnitRecordManager {
 		}
 		records = new StudentUnitRecordList();
 		
-		Document doc = XMLManager.getXML().getDocument();
+		Document document = XMLManager.getXML().getDocument();
+		
 		@SuppressWarnings("unchecked")
-		List<Element> elements = (List<Element>) doc.getRootElement()
+		List<Element> elements = (List<Element>) document.getRootElement()
 									.getChild("studentUnitRecordTable").getChildren("record");
 	
-		for (Element el : elements) {
-			if (unitCode.equals(el.getAttributeValue("uid"))){
-				Integer studentId = new Integer(el.getAttributeValue("sid"));			
+		for (Element element : elements) {
+			if (unitCode.equals(element.getAttributeValue("unitId"))){
+				Integer studentId = new Integer(element.getAttributeValue("studentId"));			
 				StudentUnitRecordProxy studentProxy = new StudentUnitRecordProxy(studentId, unitCode);
 				records.add(studentProxy);
 			}
@@ -91,44 +91,43 @@ public class StudentUnitRecordManager {
 
 	
 	
-	public StudentUnitRecordList getRecordsByStudent(Integer studentID) {
-		StudentUnitRecordList recs = recordsByStudent_.get(studentID);
-		if (recs != null) {
-			return recs;
-		}
-		recs = new StudentUnitRecordList();
+	public StudentUnitRecordList getRecordsByStudent(Integer studentId) {
 		
-		Document doc = XMLManager.getXML().getDocument();
+		StudentUnitRecordList records = recordsByStudent_.get(studentId);
+		
+		if (records != null) {
+			return records;
+		}
+		records = new StudentUnitRecordList();
+		Document document = XMLManager.getXML().getDocument();
 		@SuppressWarnings("unchecked")
-		List<Element> elements = (List<Element>) doc.getRootElement()
+		List<Element> elements = (List<Element>) document.getRootElement()
 									.getChild("studentUnitRecordTable").getChildren("record");
-	
-		for (Element el : elements) {
-			if (studentID.toString().equals(el.getAttributeValue("sid"))) {
-				recs.add(new StudentUnitRecordProxy(new Integer(el.getAttributeValue("sid")),
-						el.getAttributeValue("uid")));
+		for (Element element : elements) {
+			if (studentId.toString().equals(element.getAttributeValue("studentId"))) {
+				records.add(new StudentUnitRecordProxy(new Integer(element.getAttributeValue("studentId")),
+						element.getAttributeValue("unitId")));
 			}
 		}
-		if (recs.size() > 0) {
-			recordsByStudent_.put(studentID, recs); // be careful - this could be empty
+		if (records.size() > 0) {
+			recordsByStudent_.put(studentId, records); // be careful - this could be empty
 		}
-		return recs;
+		return records;
 	}
 
 	
 	
-	public void saveRecord(InterfaceStudentUnitRecord irec) {
-		
-		Document doc = XMLManager.getXML().getDocument();
+	public void saveRecord(InterfaceStudentUnitRecord recordInterface) {
+		Document document = XMLManager.getXML().getDocument();
 		@SuppressWarnings("unchecked")
-		List<Element> elements = (List<Element>) doc.getRootElement()
+		List<Element> elements = (List<Element>) document.getRootElement()
 									.getChild("studentUnitRecordTable").getChildren("record");
-		for (Element el : elements) {
-			if (irec.getStudentId().toString().equals(el.getAttributeValue("sid"))
-					&& irec.getUnitCode().equals(el.getAttributeValue("uid"))) {
-					el.setAttribute("asg1", new Float(irec.getAssignment1Mark()).toString());
-					el.setAttribute("asg2", new Float(irec.getAssignment2Mark()).toString());
-					el.setAttribute("exam", new Float(irec.getExamMark()).toString());
+		for (Element element : elements) {
+			if (recordInterface.getStudentId().toString().equals(element.getAttributeValue("studentId"))
+					&& recordInterface.getUnitCode().equals(element.getAttributeValue("unitId"))) {
+					element.setAttribute("assignment1", new Float(recordInterface.getAssignment1Mark()).toString());
+					element.setAttribute("assigmment2", new Float(recordInterface.getAssignment2Mark()).toString());
+					element.setAttribute("exam", new Float(recordInterface.getExamMark()).toString());
 					XMLManager.getXML().saveDocument(); // write out the XML file for continuous save
 				return;
 			}
