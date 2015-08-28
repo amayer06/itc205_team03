@@ -32,7 +32,7 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 	
 	
 	public void setAssignment1Mark(float assignment1) {
-		int assignment1Weight = UnitManager.UM().getUnit(unitCode_).getAsg1Weight();
+		int assignment1Weight = UnitManager.unitManager().getUnit(unitCode_).getAssignment1Weight();
 		if (assignment1 < 0 || assignment1 > assignment1Weight) {
 			throw new RuntimeException("Mark cannot be less than zero or greater than assessment weight");
 		}
@@ -48,7 +48,7 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 	
 	
 	public void setAssignment2Mark(float assignment2) {
-		int assignment2Weight = UnitManager.UM().getUnit(unitCode_).getAsg2Weight();
+		int assignment2Weight = UnitManager.unitManager().getUnit(unitCode_).getAssignment2Weight();
 		if (assignment2 < 0 || assignment2 > assignment2Weight) {
 			throw new RuntimeException("Mark cannot be less than zero or greater than assessment weight");
 		}
@@ -64,7 +64,7 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 	
 	
 	public void setExamMark(float exam) {
-		int examWeight = UnitManager.UM().getUnit(unitCode_).getExamWeight();
+		int examWeight = UnitManager.unitManager().getUnit(unitCode_).getExamWeight();
 		if (exam < 0 || exam > examWeight) {
 			throw new RuntimeException("Mark cannot be less than zero or greater than assessment weight");
 		}
@@ -81,5 +81,5 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 	
 	public float getTotalMark() {
 		return assignment1Mark_ + assignment2Mark_ + examMark_;
-	}
+}
 }

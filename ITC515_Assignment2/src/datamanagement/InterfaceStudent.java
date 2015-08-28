@@ -17,5 +17,4 @@ public interface InterfaceStudent {
 	public InterfaceStudentUnitRecord getUnitRecord(String unitCode);
 
 	public StudentUnitRecordList getUnitRecords();
-
 }
