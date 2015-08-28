@@ -6,5 +6,5 @@ public ListUnitsControl() {
 }
             public void listUnits( InterfaceUnitLister lister ) {
 lister.clearUnits();UnitMap units = unitManager.getUnits();
-        for (String s : units.keySet() )
-            lister.addUnit(units.get(s));}}
+        for (String string : units.keySet() )
+            lister.addUnit(units.get(string));}}
