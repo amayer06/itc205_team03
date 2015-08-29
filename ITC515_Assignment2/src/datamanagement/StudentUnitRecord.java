@@ -82,4 +82,4 @@ public class StudentUnitRecord implements InterfaceStudentUnitRecord {
 	public float getTotalMark() {
 		return assignment1Mark_ + assignment2Mark_ + examMark_;
 }
-}
+} 

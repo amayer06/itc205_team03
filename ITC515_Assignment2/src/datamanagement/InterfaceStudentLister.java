@@ -3,7 +3,7 @@ package datamanagement;
 /**
  * @author jtulip
  */
-
+ 
 public interface InterfaceStudentLister {
 
 	public void clearStudents();

@@ -9,6 +9,8 @@ public class CheckGradeControl {
 	public CheckGradeControl() {
 	}
 
+	
+	
 	public void execute() {
 		checkGradeUserInterface = new CheckGradeUserInterface(this);
 		checkGradeUserInterface.setState1(false);
@@ -25,6 +27,8 @@ public class CheckGradeControl {
 		checkGradeUserInterface.setState1(true);
 	}
 
+	
+	
 	public void unitSelected(String code) {
 		if (code.equals("NONE"))
 			checkGradeUserInterface.setState2(false);
@@ -37,6 +41,8 @@ public class CheckGradeControl {
 		checkGradeUserInterface.setState3(false);
 	}
 
+	
+	
 	public void studentSelected(Integer idNumber) {
 		currentStudentId = idNumber;
 		if (currentStudentId.intValue() == 0) {
@@ -58,6 +64,8 @@ public class CheckGradeControl {
 		}
 	}
 
+	
+	
 	public String checkGrade(float assignment1, float assignment2, float exam) {
 		InterfaceUnit unit = UnitManager.unitManager().getUnit(currentUnitCode);
 		String string = unit.getGrade(assignment1, assignment2, exam);
@@ -67,10 +75,11 @@ public class CheckGradeControl {
 		if (isChanged) {
 			checkGradeUserInterface.setState6(true);
 		}
-
 		return string;
 	}
 
+	
+	
 	public void enableChangeMarks() {
 		checkGradeUserInterface.setState4(false);
 		checkGradeUserInterface.setState6(false);
@@ -78,6 +87,8 @@ public class CheckGradeControl {
 		isChanged = true;
 	}
 
+	
+	
 	public void saveGrade(float assignment1, float assignment2, float exam) {
 		InterfaceUnit unit = UnitManager.unitManager().getUnit(currentUnitCode);
 		InterfaceStudent student = StudentManager.get().getStudent(currentStudentId);

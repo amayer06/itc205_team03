@@ -33,4 +33,4 @@ public class AppProperties {
 	public Properties getProperties() {
 		return properties_;
 	}
-}
+} 

@@ -66,4 +66,4 @@ public class StudentUnitRecordProxy implements InterfaceStudentUnitRecord {
 	public float getTotalMark() {
 		return recordManager_.getStudentUnitRecord(studentId_, unitCode_).getTotalMark();
 	}
-}
+} 

@@ -66,4 +66,4 @@ public class XMLManager {
 			throw new RuntimeException("DBMD: XMLManager : saveDocument : error writing to file");
 		}
 	}
-}
+} 

@@ -19,4 +19,4 @@ public interface InterfaceStudentUnitRecord {
 	public float getExamMark();
 
 	public float getTotalMark();
-}
+} 

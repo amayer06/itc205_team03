@@ -66,4 +66,4 @@ public class StudentProxy implements InterfaceStudent {
 	public StudentUnitRecordList getUnitRecords() {
 		return studentManagerMap_.getStudent(studentId_).getUnitRecords();
 	}
-}
+} 

@@ -62,4 +62,4 @@ public class UnitManager {
 		} // unit maps are filled with PROXY units
 		return unitMap;
 	}
-}
+} 

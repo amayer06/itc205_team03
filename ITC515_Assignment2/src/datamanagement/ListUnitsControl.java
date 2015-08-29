@@ -7,4 +7,4 @@ public ListUnitsControl() {
             public void listUnits( InterfaceUnitLister lister ) {
 lister.clearUnits();UnitMap units = unitManager.getUnits();
         for (String string : units.keySet() )
-            lister.addUnit(units.get(string));}}
+            lister.addUnit(units.get(string));}} 
