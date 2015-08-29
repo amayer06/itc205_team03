@@ -6,6 +6,8 @@ public class UnitProxy implements InterfaceUnit {
 
 	UnitManager unitManager;
 
+	
+	
 	public UnitProxy(String unitCodeValue, String unitNameValue) {
 		this.unitCode_ = unitCodeValue;
 		this.unitName_ = unitNameValue;

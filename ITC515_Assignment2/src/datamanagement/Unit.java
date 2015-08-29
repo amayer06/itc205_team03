@@ -12,6 +12,8 @@ public class Unit implements InterfaceUnit {
 
 	private StudentUnitRecordList recordStudent;
 
+	
+	
 	public Unit(String unitCodeValue, String unitNameValue, float passCuttoff, float creditCuttoff,
 			float distinctionCutoff, float highDistinctionCutoff, float additionalExaminationCutoff,
 			int assignmentWeight1, int assignmentWeight2, int examWeight, StudentUnitRecordList recordList) {
@@ -27,63 +29,93 @@ public class Unit implements InterfaceUnit {
 		recordStudent = recordList == null ? new StudentUnitRecordList() : recordList;
 	}
 
+	
+	
 	public String getUnitCode() {
 		return this.unitCode_;
 	}
 
+	
+	
 	public String getUnitName() {
 		return this.unitName_;
 	}
 
+	
+	
 	public void setPassCutoff(float cutoff) {
 		this.passCuttoff_ = cutoff;
 	}
 
+	
+	
 	public float getPassCutoff() {
 		return this.passCuttoff_;
 	}
 
+	
+	
 	public void setCreditCutoff(float cutoff) {
 		this.creditCuttoff_ = cutoff;
 	}
 
+	
+	
 	public float getCreditCutoff() {
 		return this.creditCuttoff_;
 	}
 
+	
+	
 	public void setDistinctionCutoff(float cutoff) {
 		this.distinctionCuttoff_ = cutoff;
 	}
 
+	
+	
 	public float getDistinctionCuttoff() {
 		return this.distinctionCuttoff_;
 	}
 
+	
+	
 	public void highDefinitionCutoff(float cutoff) {
 		this.highDefinitionCuttoff_ = cutoff;
 	}
 
+	
+	
 	public void setHighDistinctionCutoff(float cutoff) {
 		this.highDefinitionCuttoff_ = cutoff;
 	}
 
+	
+	
 	public float getHighDistinctionCutoff() {
 		return this.highDefinitionCuttoff_;
 
 	}
 
+	
+	
 	public void setAdditionalExaminationCutoff(float cutoff) {
 		this.additionalExaminationCutoff_ = cutoff;
 	}
 
+	
+	
 	public float getAdditionalExaminationCutoff() {
 		return this.additionalExaminationCutoff_;
 	}
 
+	
+	
 	public void addStudentRecord(InterfaceStudentUnitRecord record) {
 		recordStudent.add(record);
 	}
 
+	
+	
 	public InterfaceStudentUnitRecord getStudentRecord(int studentId) {
 		for (InterfaceStudentUnitRecord record : recordStudent) {
 			if (record.getStudentId() == studentId)
@@ -92,25 +124,35 @@ public class Unit implements InterfaceUnit {
 		return null;
 	}
 
+	
+	
 	public StudentUnitRecordList listStudentRecords() {
 		return recordStudent;
 	}
 
+	
+	
 	@Override
 	public int getAssignment1Weight() {
 		return assignment1_;
 	}
 
+	
+	
 	@Override
 	public int getAssignment2Weight() {
 		return assignment2_;
 	}
 
+	
+	
 	@Override
 	public int getExamWeight() {
 		return exam_;
 	}
 
+	
+	
 	@Override
 	public void setAssessmentWeights(int assigment1, int assignment2, int exam) {
 		if (assigment1 < 0 || assigment1 > 100 || assignment2 < 0 || assignment2 > 100 || exam < 0 || exam > 100) {
@@ -124,6 +166,8 @@ public class Unit implements InterfaceUnit {
 		this.exam_ = exam;
 	}
 
+	
+	
 	private void setCutoffs(float pass, float credit, float distinction, float highDestinction,
 			float additionalExamination) {
 		if (pass < 0 || pass > 100 || credit < 0 || credit > 100 || distinction < 0 || distinction > 100
@@ -146,6 +190,8 @@ public class Unit implements InterfaceUnit {
 
 	}
 
+	
+	
 	public String getGrade(float float1, float float2, float float3) {
 		float t = float1 + float2 + float3;
 

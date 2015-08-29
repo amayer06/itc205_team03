@@ -9,21 +9,29 @@ public class UnitManager {
 
 	private UnitMap unitMap_;
 
+	
+	
 	public static UnitManager unitManager() {
 		if (self_ == null)
 			self_ = new UnitManager();
 		return self_;
 	}
 
+	
+	
 	private UnitManager() {
 		unitMap_ = new UnitMap();
 	}
 
+	
+	
 	public InterfaceUnit getUnit(String unitCode) {
 		InterfaceUnit interfaceUnit = unitMap_.get(unitCode);
 		return interfaceUnit != null ? interfaceUnit : createUnit(unitCode);
 	}
 
+	
+	
 	private InterfaceUnit createUnit(String unitCode) {
 
 		InterfaceUnit interfaceUnit;
@@ -50,6 +58,8 @@ public class UnitManager {
 		throw new RuntimeException("DBMD: createUnit : unit not in file");
 	}
 
+	
+	
 	public UnitMap getUnits() {
 		UnitMap unitMap;
 		InterfaceUnit interfaceUnit;
