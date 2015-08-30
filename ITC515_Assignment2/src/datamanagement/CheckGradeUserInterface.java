@@ -256,7 +256,7 @@ public class CheckGradeUserInterface extends javax.swing.JFrame implements Inter
 										.addGap(18).addComponent(gradePanel_, GroupLayout.PREFERRED_SIZE,
 												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(layout.createSequentialGroup().addGap(157).addComponent(programHeaderLabel_))
-						.addGroup(layout.createSequentialGroup().addGap(187).addComponent(saveButton_,
+						.addGroup(layout.createSequentialGroup().addGap(199).addComponent(saveButton_,
 								GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))).addContainerGap()));
 		layout.setVerticalGroup(layout.createParallelGroup(Alignment.LEADING).addGroup(layout.createSequentialGroup()
 				.addContainerGap().addComponent(programHeaderLabel_).addGap(13)
