@@ -1,38 +1,71 @@
 package datamanagement;
 
-public class Student implements IStudent {
-    private Integer id; private String fn;
-            private String ln;
-private StudentUnitRecordList su;
+public class Student implements InterfaceStudent {
+	private Integer studentId_;
+	private String firstName_;
+	private String lastName_;
+	private StudentUnitRecordList studentUnits_;
 
-public Student( Integer id, String fn, String ln, StudentUnitRecordList su ) { this.id = id; this.fn = fn;
-        this.ln = ln;this.su = 
-        su == null ? new StudentUnitRecordList() : 
-                su;
-}
+	
+	
+	public Student(Integer studentId, String firstName, String lastName, StudentUnitRecordList studentUnit) {
+		this.studentId_ = studentId;
+		this.firstName_ = firstName;
+		this.lastName_ = lastName;
+		this.studentUnits_ = studentUnit == null ? new StudentUnitRecordList() : studentUnit;
+	}
 
-    public Integer getID() { return this.id; 
-} public String getFirstName() { 
-return fn; }
+	
+	
+	public Integer getID() {
+		return this.studentId_;
+	}
 
-    public void setFirstName( String firstName ) { 
-this.fn = firstName; }
+	
+	
+	public String getFirstName() {
+		return firstName_;
+	}
 
-public String getLastName() { 
-    return ln; }
-    public void setLastName( String lastName ) { 
+	
+	
+	public void setFirstName(String firstName) {
+		this.firstName_ = firstName;
+	}
 
-        
-this.ln = lastName; }
+	
+	
+	public String getLastName() {
+		return lastName_;
+	}
 
-public void addUnitRecord( IStudentUnitRecord record ) { su.add(record); }
-        public IStudentUnitRecord getUnitRecord( String unitCode ) {
-for ( IStudentUnitRecord r : su ) 
-            if ( r.getUnitCode().equals(unitCode)) 
-return r; 
+	
+	
+	public void setLastName(String lastName) {
 
-return null;
-        
-}
+		this.lastName_ = lastName;
+	}
 
-public StudentUnitRecordList getUnitRecords() { return su; }}
+	
+	
+	public void addUnitRecord(InterfaceStudentUnitRecord record) {
+		studentUnits_.add(record);
+	}
+
+	
+	
+	public InterfaceStudentUnitRecord getUnitRecord(String unitCode) {
+		for (InterfaceStudentUnitRecord record : studentUnits_)
+			if (record.getUnitCode().equals(unitCode))
+				return record;
+
+		return null;
+
+	}
+
+	
+	
+	public StudentUnitRecordList getUnitRecords() {
+		return studentUnits_;
+	}
+} 
