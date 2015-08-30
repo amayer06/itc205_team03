@@ -24,7 +24,6 @@ public class XMLManager {
 	
 	private XMLManager() {
 		init();
-
 	}
 
 	
